@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'oovera Up - Cosméticos de Luxo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,500;1,6..96,600;1,6..96,700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --fonte-logo: 'Cormorant Garamond', serif; /* Alta Costura / Editorial */
+            --fonte-editorial: 'Bodoni Moda', serif;     /* Elegância Clássica com Contraste Marcante */
+            --fonte-titulos: 'Cinzel', serif;          /* Nobre e Imponente */
+            --fonte-corpo: 'Plus Jakarta Sans', sans-serif; /* Leitura Suave e Fluida */
+            
+            --cor-principal: #2ec4b6;
+            --cor-destaque: #a7f3d0;
+            --cor-ouro-suave: #e2c99f;
+            --fundo-dark: #0a1618;
+            --fundo-card: rgba(18, 38, 42, 0.75);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            line-height: 1.7;
+            background-color: var(--fundo-dark);
+            color: #e5ecec;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ----- CABEÇALHO & MARCA DA PRIMEIRA TELA ----- */
+        .selo-topo {
+            font-family: var(--fonte-corpo);
+            font-size: 0.72rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--cor-ouro-suave);
+            margin-top: 10px;
+            margin-bottom: 5px;
+            display: block;
+            opacity: 0.9;
+        }
+
+        header h1 {
+            font-family: var(--fonte-logo);
+            font-style: italic;
+            font-weight: 700;
+            font-size: 3.8rem;
+            color: var(--cor-principal);
+            letter-spacing: 2px;
+            line-height: 1.05;
+            margin-bottom: 2px;
+            text-shadow: 0 4px 20px rgba(46, 196, 182, 0.15);
+        }
+
+        .sub-marca {
+            font-family: var(--fonte-corpo);
+            letter-spacing: 8px;
+            font-size: 0.78rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: var(--cor-destaque);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        header h2 {
+            font-family: var(--fonte-editorial);
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1.85rem;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+            border: none;
+            padding: 0;
+            text-transform: none;
+        }
+
+        header p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.88);
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        /* ----- TÍTULOS E SUBTÍTULOS DO SITE ----- */
+        h2 {
+            font-family: var(--fonte-titulos);
+            font-weight: 500;
+            color: var(--cor-principal);
+            font-size: 1.5rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(46, 196, 182, 0.25);
+            padding-bottom: 10px;
+        }
+
+        h3, .card h4, header p strong {
+            font-family: var(--fonte-editorial);
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1.45rem;
+            color: var(--cor-destaque);
+            line-height: 1.35;
+            margin-bottom: 10px;
+        }
+
+        header p strong {
+            display: block;
+            margin-top: 25px;
+            color: var(--cor-principal);
+            font-size: 1.35rem;
+        }
+
+        /* ----- TEXTO DO CORPO E PARÁGRAFOS ----- */
+        p {
+            font-family: var(--fonte-corpo);
+            font-weight: 300;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            color: rgba(240, 245, 245, 0.9);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        ul li {
+            font-family: var(--fonte-corpo);
+            font-weight: 300;
+            font-size: 0.98rem;
+            margin-bottom: 12px;
+            color: rgba(240, 245, 245, 0.92);
+            line-height: 1.6;
+        }
+
+        /* ----- BOTÕES DE AÇÃO ----- */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #2ec4b6 0%, #1e9d91 100%);
+            color: #051012;
+            padding: 16px 32px;
+            text-decoration: none;
+            font-family: var(--fonte-corpo);
+            font-weight: 500;
+            font-size: 0.88rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(46, 196, 182, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 196, 182, 0.4);
+            color: #000;
+        }
+
+        /* ----- CARDS E PAINÉIS ----- */
+        .card {
+            background: var(--fundo-card);
+            backdrop-filter: blur(10px);
+            padding: 22px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(46, 196, 182, 0.25);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .pop-up {
+            background-color: rgba(224, 247, 250, 0.08);
+            border: 1px solid rgba(46, 196, 182, 0.35);
+            color: #ffffff;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-family: var(--fonte-corpo);
+            font-size: 0.92rem;
+            font-weight: 300;
+        }
+
+        .pop-up strong {
+            color: var(--cor-destaque);
+            font-weight: 500;
+            font-family: var(--fonte-corpo);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(46, 196, 182, 0.5), transparent);
+            margin: 40px 0;
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 0.82em;
+            color: #7a8c8e;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 30px;
+            font-family: var(--fonte-corpo);
+            font-weight: 300;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: #7a8c8e;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="selo-topo">Tratamento Capilar de Alta Performance</span>
+        <h1>D'OOVERA UP</h1>
+        <span class="sub-marca">Cosméticos</span>
+        
+        <h2>Recupere sua autoestima e renasça com o tratamento capilar mais avançado do mercado.</h2>
+        <p>A D'oovera Up une a precisão da ciência à pureza da natureza para reconstruir seus fios, estimular o crescimento e combater a queda capilar.</p>
+        
+        <p><strong>Ingredientes naturais, cultivados organicamente:</strong></p>
+        <ul>
+            <li>Ativos de altíssima concentração e pureza.</li>
+            <li>Resultados visíveis entre 35 e 40 dias, com registro estatístico médio do nascimento de 43 novos fios em apenas 2cm².</li>
+            <li>Fortalecimento profundo da estrutura existente para prevenção contínua da queda.</li>
+            <li>Fórmula ideal para alopecia, calvície hereditária e recuperação pós-transplante.</li>
+        </ul>
+        <a href="#" class="btn">QUERO ADQUIRIR NA PRÉ-VENDA</a>
+        <p><small style="color: rgba(255,255,255,0.6); font-size: 0.82rem;">Garantia de satisfação. Primeira entrega em até 45 dias.</small></p>
+    </header>
+
+    <hr>
+
+    <div class="pop-up">
+        <strong>Raquel Silveira</strong> - há 22 minutos<br>
+        Adquiriu a assinatura do tratamento!
+    </div>
+
+    <section>
+        <h2>Cansado(a) de soluções que não funcionam?</h2>
+        <p>Se você já testou múltiplos tratamentos sem alcançar resultados reais, o entrave pode estar na composição do produto escolhido. A grande maioria das opções do mercado utiliza hormônios sintéticos ou betabloqueadores que desencadeiam efeitos colaterais sem sustentabilidade a longo prazo.</p>
+        <p>Com a D'oovera Up, você experimenta um ritual 100% natural, sem hormônios, certificado e com eficácia comprovada por registros científicos.</p>
+        <a href="#" class="btn">QUERO ADQUIRIR NA PRÉ-VENDA</a>
+    </section>
+
+    <section>
+        <h2>PARA QUEM É</h2>
+        <h3>A D'oovera Up é ideal para você que:</h3>
+        <div class="card">Sofre com queda acentuada de cabelo ou predisposição à calvície hereditária.</div>
+        <div class="card">Deseja estimular o surgimento e o crescimento de novos fios de forma orgânica e segura.</div>
+        <div class="card">Busca encorpar e fortalecer cabelos finos, quebradiços ou enfraquecidos.</div>
+        <div class="card">Realizou transplante capilar e necessita proteger e nutrir a área doadora e os novos enxertos.</div>
+        <div class="card">Prioriza fórmulas limpas e biológicas, isentas de hormônios e efeitos adversos.</div>
+        <div class="card">Valoriza biotecnologia inovadora respaldada por comprovação e elegância.</div>
+        <a href="#" class="btn">QUERO RECUPERAR MEU CABELO</a>
+    </section>
+
+    <section>
+        <h2>DIFERENCIAIS EXCLUSIVOS</h2>
+        <h3>Por que a experiência D'oovera Up é única?</h3>
+        <div class="card">
+            <h4>Cultivo Orgânico Selecionado</h4>
+            <p>Cultivo estritamente orgânico focado em preservar a integridade total dos fitoativos presentes na botânica do tratamento.</p>
+        </div>
+        <div class="card">
+            <h4>Biotecnologia por Liofilização</h4>
+            <p>Processo de extração a frio por liofilização, garantindo retenção máxima da bioessência e nutrientes essenciais.</p>
+        </div>
+        <div class="card">
+            <h4>Fórmula Pura e Isenta</h4>
+            <p>Zero hormônios e zero betabloqueadores. Máxima eficácia aliada ao mais alto padrão de segurança biomédica.</p>
+        </div>
+        <div class="card">
+            <h4>Compromisso com a Sustentabilidade</h4>
+            <p>Práticas sustentáveis e rastreáveis em todas as etapas da cadeia de produção.</p>
+        </div>
+        <div class="card">
+            <h4>Atendimento e Suporte Personalizados</h4>
+            <p>Acompanhamento exclusivo durante toda a sua jornada de transformação capilar.</p>
+        </div>
+        <a href="#" class="btn">QUERO ADQUIRIR NA PRÉ-VENDA</a>
+    </section>
+
+    <section>
+        <h2>ETAPAS DO TRATAMENTO</h2>
+        <div class="card">
+            <h3>INÍCIO: 1 a 2 meses</h3>
+            <p>Redução expressiva da queda capilar e ancoragem dos fios existentes.</p>
+        </div>
+        <div class="card">
+            <h3>CRESCIMENTO: 3 a 6 meses</h3>
+            <p>Estimulação do nascimento de novos fios e preenchimento visível das áreas de maior escassez.</p>
+        </div>
+        <div class="card">
+            <h3>EVOLUÇÃO: 6 meses em diante</h3>
+            <p>Consolidação da densidade capilar, fios encorpados, resistentes e com brilho renovado.</p>
+        </div>
+        <a href="#" class="btn">QUERO RECUPERAR MEU CABELO</a>
+    </section>
+
+    <section>
+        <h2>DEPOIMENTOS DE CLIENTES</h2>
+        <h3>Histórias reais de transformação</h3>
+        
+        <div class="card">
+            <h4>Ana, 34 anos</h4>
+            <p><small style="color: var(--cor-principal);">Assinante há 2 meses</small></p>
+            <p style="font-family: var(--fonte-editorial); font-style: italic; font-size: 1.1rem; color: #ffffff; margin-top: 8px;">"Em apenas dois meses de uso contínuo, notei o nascimento visível de novos fios nas regiões que mais me incomodavam. Resgatei minha confiança ao me olhar no espelho."</p>
+        </div>
+
+        <div class="card">
+            <h4>João, 42 anos</h4>
+            <p><small style="color: var(--cor-principal);">Assinante há 3 meses</small></p>
+            <p style="font-family: var(--fonte-editorial); font-style: italic; font-size: 1.1rem; color: #ffffff; margin-top: 8px;">"Sempre enfrentei queda capilar intensa sem encontrar um tratamento eficaz. Com a D'oovera Up, percebi a mudança logo nas primeiras semanas. A queda cessou e os fios ganharam força."</p>
+        </div>
+
+        <div class="card">
+            <h4>Camila, 29 anos</h4>
+            <p><small style="color: var(--cor-principal);">Assinante há 2 meses</small></p>
+            <p style="font-family: var(--fonte-editorial); font-style: italic; font-size: 1.1rem; color: #ffffff; margin-top: 8px;">"Sentia uma insegurança enorme devido à rarefação no topo da cabeça. Após adotar a linha D'oovera Up, vivenciei uma recuperação impressionante do volume capilar."</p>
+        </div>
+
+        <div class="card">
+            <h4>Felipe, 37 anos</h4>
+            <p><small style="color: var(--cor-principal);">Assinante há 3 meses</small></p>
+            <p style="font-family: var(--fonte-editorial); font-style: italic; font-size: 1.1rem; color: #ffffff; margin-top: 8px;">"Confesso que estava cético, mas os resultados comprovaram a eficiência do produto. Em 3 meses, novas áreas antes falhadas voltaram a ter cobertura de fios."</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>SELEÇÃO DE TRATAMENTO</h2>
+        
+        <div class="card" style="border: 2px solid var(--cor-principal); padding: 28px;">
+            <h3>Tratamento Avulso - 1 Mês</h3>
+            <p style="color: var(--cor-destaque);">Kit Essencial: Shampoo, Condicionador e Tônico Reconstrução</p>
+            <p style="font-size: 2.1rem; font-family: var(--fonte-editorial); font-style: italic; color: #ffffff; margin: 12px 0;">5x de R$ 99,40</p>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">ou R$ 497,00 à vista</p>
+            <ul style="margin-top: 15px;">
+                <li>1 Kit de tratamento completo (3 produtos)</li>
+                <li>Guia exclusivo de aplicação e cuidados</li>
+                <li>Escova massagadora capilar de alta precisão</li>
+                <li>Frete grátis para as regiões Sul e Sudeste</li>
+            </ul>
+            <a href="#" class="btn" style="width: 100%; display: block;">INICIAR TRATAMENTO →</a>
+            <p><small style="color: rgba(255,255,255,0.6);">Primeira entrega em até 45 dias pós-garantia.</small></p>
+        </div>
+    </section>
+
+    <section>
+        <p>A fórmula D'oovera Up é enriquecida com fitoativos liofilizados em estado puro, garantindo máxima afinidade cutânea e absorção celular para revitalização do folículo capilar.</p>
+        <div class="card" style="text-align: center; border: 1px dashed var(--cor-principal);">
+            <h3 style="margin-bottom: 0; color: #ffffff;">15 DIAS DE GARANTIA DE SATISFAÇÃO</h3>
+        </div>
+    </section>
+
+    <section>
+        <div class="pop-up">
+            <strong>Roberta Cavalcante</strong> - há 32 minutos<br>
+            Adquiriu o kit de tratamento!
+        </div>
+
+        <h2>DÚVIDAS FREQUENTES (FAQ)</h2>
+        
+        <div class="card">
+            <h4>O produto é seguro?</h4>
+            <p>Sim, é uma formulação 100% natural, livre de hormônios sintéticos e betabloqueadores.</p>
+        </div>
+        <div class="card">
+            <h4>Preciso de prescrição médica para uso?</h4>
+            <p>Não. Trata-se de um cosmético capilar avançado e limpo, sem necessidade de receita médica.</p>
+        </div>
+        <div class="card">
+            <h4>Em quanto tempo noto os primeiros resultados?</h4>
+            <p>Os primeiros sinais de fortalecimento e nascimento de fios são registrados entre 35 e 40 dias de aplicação diária.</p>
+        </div>
+        <div class="card">
+            <h4>Posso utilizar após a realização de transplante capilar?</h4>
+            <p>Perfeitamente. A linha é recomendada para nutrir e acelerar o desenvolvimento saudável dos enxertos e proteger a área doadora.</p>
+        </div>
+        <div class="card">
+            <h4>Há registros de efeitos colaterais?</h4>
+            <p>Não. Por possuir composição vegetal e isenta de fármacos, o tratamento é totalmente seguro e bem tolerado.</p>
+        </div>
+        <div class="card">
+            <h4>O processo de produção é sustentável?</h4>
+            <p>Sim. Todas as matérias-primas são oriundas de cultivo orgânico rastreável com processos de extração limpos.</p>
+        </div>
+        <div class="card">
+            <h4>Funciona para todos os tipos e curvaturas de cabelo?</h4>
+            <p>Sim. A atuação ocorre diretamente no bulbo capilar e couro cabeludo, beneficiando qualquer tipo de fio.</p>
+        </div>
+        <div class="card">
+            <h4>Como efetuar a compra com segurança?</h4>
+            <p>Clique no botão abaixo para ser direcionado ao canal de suporte e checkout oficial.</p>
+        </div>
+
+        <a href="#" class="btn">FALAR COM A EQUIPE E ADQUIRIR</a>
+    </section>
+
+    <footer>
+        <p>CNPJ: 56.901.678/0001-08</p>
+        <p><strong>Canais de Atendimento:</strong></p>
+        <p>Instagram: @dooveraupcosmetics</p>
+        <p>E-mail: contato@dooveraup.com.br</p>
+        <p>Suporte Exclusivo via WhatsApp: (61) 99868-2802</p>
+
+        <p style="margin-top: 20px;">Copyright 2026 D'oovera Up Cosméticos. Todos os direitos reservados.</p>
+
+        <p><small style="font-size: 0.75rem; opacity: 0.7;">ESTE SITE NÃO É DO FACEBOOK: Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial independente da FACEBOOK, Inc.</small></p>
+    </footer>
+
+</body>
+</html>
