@@ -50,6 +50,8 @@
             --carrossel-w: 200px;
             --carrossel-h: 260px;
             --carrossel-radius: 220px;
+
+            --tamanho-img-marca: 90px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -136,16 +138,16 @@
             display: grid;
             grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            gap: 18px;
+            gap: 22px;
             margin: 0 auto 30px;
-            max-width: 620px;
+            max-width: 680px;
             position: relative;
             z-index: 1;
         }
 
         .marca-wrapper img {
-            width: 72px;
-            height: 72px;
+            width: var(--tamanho-img-marca);
+            height: var(--tamanho-img-marca);
             object-fit: cover;
             border-radius: 50%;
             border: 1px solid var(--borda-media);
@@ -153,6 +155,7 @@
             background: #fff;
             box-shadow: 0 0 0 1px var(--borda-suave), var(--sombra-elegante);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            justify-self: center;
         }
 
         .marca-wrapper img:hover {
@@ -351,6 +354,49 @@
             line-height: 1.35;
             margin-bottom: 10px;
             text-wrap: balance;
+        }
+
+        /* ============================================================
+           DIVISÓRIA ELEGANTE
+           ============================================================ */
+        .divisor-elegante {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 46px auto 42px;
+            max-width: 400px;
+            padding: 0 24px;
+            position: relative;
+        }
+
+        .divisor-elegante .divisor-linha {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--borda-media) 100%);
+        }
+
+        .divisor-elegante .divisor-linha:last-child {
+            background: linear-gradient(90deg, var(--borda-media) 0%, transparent 100%);
+        }
+
+        .divisor-elegante .divisor-ornamento {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--verde-suave);
+            flex-shrink: 0;
+        }
+
+        .divisor-elegante .divisor-ornamento i {
+            font-size: 0.78rem;
+            opacity: 0.75;
+        }
+
+        .divisor-elegante .divisor-losango {
+            color: var(--dourado-suave);
+            font-size: 0.6rem;
+            line-height: 1;
         }
 
         /* ============================================================
@@ -887,7 +933,7 @@
         }
 
         /* ============================================================
-           POP-UP FLUTUANTE "CONSUELO" — formato celular
+           POP-UP FLUTUANTE "CONSUELO"
            ============================================================ */
         .popup-consuelo {
             position: fixed;
@@ -918,7 +964,6 @@
             pointer-events: auto;
         }
 
-        /* Moldura interna dupla */
         .popup-consuelo::before {
             content: "";
             position: absolute;
@@ -928,7 +973,6 @@
             pointer-events: none;
         }
 
-        /* Folhinhas decorativas nos cantos superiores */
         .popup-consuelo::after {
             content: "";
             position: absolute;
@@ -1110,7 +1154,7 @@
         }
 
         /* ============================================================
-           TEXTO / LISTAS / BOTÕES
+           TEXTO / LISTAS
            ============================================================ */
         p {
             font-weight: 400;
@@ -1213,32 +1257,6 @@
             transform: translateY(-1px);
         }
         .card:hover::after { opacity: 0.55; }
-
-        /* ============================================================
-           POP-UP (notificação)
-           ============================================================ */
-        .pop-up {
-            position: relative;
-            background: linear-gradient(180deg, #ffffff 0%, #fbfdfc 100%);
-            border: 1px solid var(--borda-suave);
-            border-radius: 12px;
-            padding: 16px 22px 16px 26px;
-            margin-bottom: 30px;
-            font-size: var(--fs-pequeno);
-            color: var(--verde-esmeralda);
-            box-shadow: var(--sombra-elegante);
-        }
-        .pop-up::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 14%;
-            bottom: 14%;
-            width: 3px;
-            background: linear-gradient(180deg, var(--verde-suave), var(--verde-esmeralda));
-            border-radius: 3px;
-        }
-        .pop-up strong { font-weight: 600; color: var(--verde-esmeralda); }
 
         /* ============================================================
            CITAÇÕES / PREÇOS
@@ -1359,6 +1377,9 @@
            RESPONSIVO
            ============================================================ */
         @media (max-width: 900px) {
+            :root {
+                --tamanho-img-marca: 82px;
+            }
             .popup-consuelo {
                 width: 230px;
                 right: 16px;
@@ -1366,6 +1387,9 @@
         }
 
         @media (max-width: 640px) {
+            :root {
+                --tamanho-img-marca: 76px;
+            }
             .popup-consuelo {
                 width: 200px;
                 right: 12px;
@@ -1382,15 +1406,34 @@
                 --carrossel-w: 150px;
                 --carrossel-h: 195px;
                 --carrossel-radius: 155px;
+                --tamanho-img-marca: 80px;
             }
+
+            .marca-wrapper {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "img1"
+                    "centro"
+                    "img2";
+                gap: 22px;
+                justify-items: center;
+                max-width: 100%;
+            }
+
+            .marca-wrapper img:first-of-type { grid-area: img1; }
+            .marca-wrapper .marca-centro { grid-area: centro; }
+            .marca-wrapper img:last-of-type { grid-area: img2; }
 
             .popup-consuelo {
                 top: auto;
-                bottom: 14px;
+                bottom: 10px;
                 right: 50%;
-                width: calc(100% - 32px);
-                max-width: 260px;
+                width: calc(100% - 60px);
+                max-width: 190px;
                 transform: translateX(50%) translateY(calc(100% + 40px));
+                padding: 9px 9px 12px;
+                border-radius: 16px;
             }
 
             .popup-consuelo.visivel {
@@ -1398,14 +1441,48 @@
             }
 
             .popup-consuelo .foto-consuelo {
-                aspect-ratio: 16 / 10;
+                aspect-ratio: 3 / 4;
+                border-radius: 12px;
             }
 
-            .marca-wrapper {
-                grid-template-columns: 1fr;
-                gap: 14px;
+            .popup-consuelo .info-consuelo {
+                padding: 10px 4px 2px;
             }
-            .marca-wrapper img { width: 56px; height: 56px; }
+
+            .popup-consuelo .nome-consuelo { font-size: 1rem; }
+            .popup-consuelo .funcao-consuelo {
+                font-size: 0.56rem;
+                letter-spacing: 0.12em;
+                margin-bottom: 8px;
+            }
+
+            .popup-consuelo .divisor-consuelo {
+                width: 32px;
+                margin-bottom: 8px;
+            }
+
+            .popup-consuelo .contato-consuelo { gap: 5px; margin-bottom: 8px; }
+            .popup-consuelo .contato-consuelo a {
+                font-size: 0.63rem;
+                padding: 5px 7px;
+                gap: 5px;
+                border-radius: 40px;
+            }
+            .popup-consuelo .contato-consuelo a i { font-size: 0.7rem; }
+
+            .popup-consuelo .btn-consuelo {
+                font-size: 0.58rem;
+                padding: 7px 8px;
+                letter-spacing: 0.14em;
+            }
+
+            .popup-consuelo .fechar-popup {
+                width: 22px;
+                height: 22px;
+                font-size: 0.62rem;
+                top: 6px;
+                right: 6px;
+            }
 
             .caixa-frase { padding: 44px 26px; }
             .caixa-frase::before { inset: 8px; }
@@ -1436,6 +1513,8 @@
             }
 
             .carrossel-hint { font-size: 0.7rem; letter-spacing: 0.18em; }
+
+            .divisor-elegante { margin: 36px auto 32px; max-width: 320px; gap: 12px; }
         }
     </style>
 </head>
@@ -1445,12 +1524,12 @@
         <span class="selo-topo">Tratamento Capilar de Alta Performance</span>
 
         <div class="marca-wrapper">
-            <img src="1.jpg" alt="Elemento decorativo esquerdo">
+            <img src="1.jpg" alt="Elemento decorativo superior">
             <div class="marca-centro">
                 <h1>D'oovera</h1>
                 <span class="sub-marca">Cosméticos</span>
             </div>
-            <img src="2.jpg" alt="Elemento decorativo direito">
+            <img src="2.jpg" alt="Elemento decorativo inferior">
         </div>
 
         <h2>Recupere sua autoestima e renasça com o tratamento capilar mais avançado do mercado.</h2>
@@ -1493,24 +1572,33 @@
             <p>Fórmula ideal para alopecia, calvície hereditária e recuperação pós-transplante.</p>
         </article>
 
-        <div style="text-align:center;">
-            <a href="https://wa.me/5561998682802" class="btn">Quero adquirir na pré-venda</a>
-            <p><small style="color: var(--texto-suave);">Garantia de satisfação. Primeira entrega em até 45 dias.</small></p>
+        <div class="divisor-elegante" aria-hidden="true">
+            <span class="divisor-linha"></span>
+            <span class="divisor-ornamento">
+                <i class="fa-solid fa-leaf"></i>
+                <span class="divisor-losango">◆</span>
+                <i class="fa-solid fa-leaf"></i>
+            </span>
+            <span class="divisor-linha"></span>
         </div>
     </section>
 
     <hr>
 
-    <div class="pop-up" role="status">
-        <strong>Raquel Silveira</strong> — há 22 minutos<br>
-        Adquiriu a assinatura do tratamento!
-    </div>
-
     <section>
         <h2>Cansado(a) de soluções que não funcionam?</h2>
         <p>Se você já testou múltiplos tratamentos sem alcançar resultados reais, o entrave pode estar na composição do produto escolhido. A grande maioria das opções do mercado utiliza hormônios sintéticos ou betabloqueadores que desencadeiam efeitos colaterais sem sustentabilidade a longo prazo.</p>
         <p>Com a D'oovera Up, você experimenta um ritual 100% natural, sem hormônios, certificado e com eficácia comprovada por registros científicos.</p>
-        <a href="https://wa.me/5561998682802" class="btn">Quero adquirir na pré-venda</a>
+
+        <div class="divisor-elegante" aria-hidden="true">
+            <span class="divisor-linha"></span>
+            <span class="divisor-ornamento">
+                <i class="fa-solid fa-leaf"></i>
+                <span class="divisor-losango">◆</span>
+                <i class="fa-solid fa-leaf"></i>
+            </span>
+            <span class="divisor-linha"></span>
+        </div>
     </section>
 
     <section>
@@ -1547,8 +1635,14 @@
             <p>Valoriza biotecnologia inovadora respaldada por comprovação e elegância.</p>
         </article>
 
-        <div style="text-align: center;">
-            <a href="https://wa.me/5561998682802" class="btn">Quero recuperar meu cabelo</a>
+        <div class="divisor-elegante" aria-hidden="true">
+            <span class="divisor-linha"></span>
+            <span class="divisor-ornamento">
+                <i class="fa-solid fa-leaf"></i>
+                <span class="divisor-losango">◆</span>
+                <i class="fa-solid fa-leaf"></i>
+            </span>
+            <span class="divisor-linha"></span>
         </div>
     </section>
 
@@ -1599,8 +1693,14 @@
             <p class="texto-diferencial">Acompanhamento exclusivo durante toda a sua jornada de transformação capilar.</p>
         </article>
 
-        <div style="text-align: center;">
-            <a href="https://wa.me/5561998682802" class="btn">Quero adquirir na pré-venda</a>
+        <div class="divisor-elegante" aria-hidden="true">
+            <span class="divisor-linha"></span>
+            <span class="divisor-ornamento">
+                <i class="fa-solid fa-leaf"></i>
+                <span class="divisor-losango">◆</span>
+                <i class="fa-solid fa-leaf"></i>
+            </span>
+            <span class="divisor-linha"></span>
         </div>
     </section>
 
@@ -1690,7 +1790,16 @@
             <h3>Evolução · 6 meses em diante</h3>
             <p>Consolidação da densidade capilar, fios encorpados, resistentes e com brilho renovado.</p>
         </article>
-        <a href="https://wa.me/5561998682802" class="btn">Quero recuperar meu cabelo</a>
+
+        <div class="divisor-elegante" aria-hidden="true">
+            <span class="divisor-linha"></span>
+            <span class="divisor-ornamento">
+                <i class="fa-solid fa-leaf"></i>
+                <span class="divisor-losango">◆</span>
+                <i class="fa-solid fa-leaf"></i>
+            </span>
+            <span class="divisor-linha"></span>
+        </div>
     </section>
 
     <section>
@@ -1749,11 +1858,6 @@
     </section>
 
     <section>
-        <div class="pop-up" role="status">
-            <strong>Roberta Cavalcante</strong> — há 32 minutos<br>
-            Adquiriu o kit de tratamento!
-        </div>
-
         <h2>Dúvidas frequentes (FAQ)</h2>
 
         <article class="card">
@@ -1804,9 +1908,6 @@
         <p class="disclaimer">ESTE SITE NÃO É DO FACEBOOK: Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial independente da FACEBOOK, Inc.</p>
     </footer>
 
-    <!-- ============================================================
-         POP-UP FLUTUANTE — Consuelo (foto 7.jpeg)
-         ============================================================ -->
     <aside class="popup-consuelo" id="popupConsuelo" role="dialog" aria-label="Fale com a Consuelo">
         <button class="fechar-popup" id="fecharConsuelo" aria-label="Fechar">
             <i class="fa-solid fa-xmark"></i>
@@ -1933,7 +2034,7 @@
         }
 
         /* ============================================================
-           POP-UP "CONSUELO" — aparece ao rolar além do carrossel
+           POP-UP "CONSUELO"
            ============================================================ */
         var popup = document.getElementById('popupConsuelo');
         var btnFechar = document.getElementById('fecharConsuelo');
