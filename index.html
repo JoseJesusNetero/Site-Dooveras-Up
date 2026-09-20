@@ -51,7 +51,10 @@
             --carrossel-h: 260px;
             --carrossel-radius: 220px;
 
-            --tamanho-img-marca: 90px;
+            /* Imagens 1 e 2 — retângulo arredondado moderado */
+            --tamanho-img-w: 105px;
+            --tamanho-img-h: 78px;
+            --radius-img: 18px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -146,21 +149,25 @@
         }
 
         .marca-wrapper img {
-            width: var(--tamanho-img-marca);
-            height: var(--tamanho-img-marca);
+            width: var(--tamanho-img-w);
+            height: var(--tamanho-img-h);
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: var(--radius-img);
             border: 1px solid var(--borda-media);
-            padding: 4px;
+            padding: 5px;
             background: #fff;
-            box-shadow: 0 0 0 1px var(--borda-suave), var(--sombra-elegante);
+            box-shadow:
+                0 0 0 1px var(--borda-suave),
+                var(--sombra-elegante);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             justify-self: center;
         }
 
         .marca-wrapper img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 0 1px var(--verde-suave), var(--sombra-forte);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow:
+                0 0 0 1px var(--verde-suave),
+                var(--sombra-forte);
         }
 
         .marca-centro {
@@ -216,7 +223,7 @@
            ============================================================ */
         .caixa-frase {
             position: relative;
-            margin: 0 auto 55px;
+            margin: 0 auto 40px;
             padding: 52px 42px;
             text-align: center;
             background:
@@ -303,6 +310,80 @@
             color: var(--dourado-suave);
             font-weight: 700;
         }
+
+        /* ============================================================
+           SEÇÃO IMAGEM 8 — moldura elegante
+           ============================================================ */
+        .secao-imagem-8 {
+            margin: 0 auto 55px;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .moldura-imagem-8 {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--borda-media);
+            box-shadow:
+                0 0 0 6px rgba(255, 255, 255, 1),
+                0 0 0 7px var(--borda-suave),
+                var(--sombra-forte);
+        }
+
+        .moldura-imagem-8::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(13, 92, 82, 0.12);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .moldura-imagem-8::after {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border-radius: 8px;
+            background:
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) left top / 26px 1px no-repeat,
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) left top / 1px 26px no-repeat,
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) right top / 26px 1px no-repeat,
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) right top / 1px 26px no-repeat,
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) left bottom / 26px 1px no-repeat,
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) left bottom / 1px 26px no-repeat,
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) right bottom / 26px 1px no-repeat,
+                linear-gradient(var(--dourado-suave), var(--dourado-suave)) right bottom / 1px 26px no-repeat;
+            pointer-events: none;
+            opacity: 0.7;
+            z-index: 2;
+        }
+
+        .moldura-imagem-8 img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        .moldura-imagem-8 .folha-imagem {
+            position: absolute;
+            font-size: 1.05rem;
+            color: var(--verde-suave);
+            opacity: 0.42;
+            z-index: 3;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .moldura-imagem-8 .folha-imagem.tl { top: 22px;    left: 22px;  transform: rotate(-25deg); }
+        .moldura-imagem-8 .folha-imagem.tr { top: 22px;    right: 22px; transform: rotate(25deg) scaleX(-1); }
+        .moldura-imagem-8 .folha-imagem.bl { bottom: 22px; left: 22px;  transform: rotate(-155deg); }
+        .moldura-imagem-8 .folha-imagem.br { bottom: 22px; right: 22px; transform: rotate(155deg) scaleX(-1); }
+
+        .moldura-imagem-8:hover .folha-imagem { opacity: 0.85; }
 
         /* ============================================================
            TÍTULOS DE SEÇÃO
@@ -1378,7 +1459,9 @@
            ============================================================ */
         @media (max-width: 900px) {
             :root {
-                --tamanho-img-marca: 82px;
+                --tamanho-img-w: 98px;
+                --tamanho-img-h: 72px;
+                --radius-img: 17px;
             }
             .popup-consuelo {
                 width: 230px;
@@ -1388,7 +1471,9 @@
 
         @media (max-width: 640px) {
             :root {
-                --tamanho-img-marca: 76px;
+                --tamanho-img-w: 90px;
+                --tamanho-img-h: 66px;
+                --radius-img: 15px;
             }
             .popup-consuelo {
                 width: 200px;
@@ -1406,7 +1491,9 @@
                 --carrossel-w: 150px;
                 --carrossel-h: 195px;
                 --carrossel-radius: 155px;
-                --tamanho-img-marca: 80px;
+                --tamanho-img-w: 145px;
+                --tamanho-img-h: 105px;
+                --radius-img: 18px;
             }
 
             .marca-wrapper {
@@ -1416,7 +1503,7 @@
                     "img1"
                     "centro"
                     "img2";
-                gap: 22px;
+                gap: 24px;
                 justify-items: center;
                 max-width: 100%;
             }
@@ -1493,6 +1580,14 @@
             .caixa-frase .folha-canto.bl { bottom: 14px; left: 14px; }
             .caixa-frase .folha-canto.br { bottom: 14px; right: 14px; }
 
+            .moldura-imagem-8::before { inset: 8px; }
+            .moldura-imagem-8::after { inset: 12px; }
+            .moldura-imagem-8 .folha-imagem { font-size: 0.9rem; }
+            .moldura-imagem-8 .folha-imagem.tl { top: 14px; left: 14px; }
+            .moldura-imagem-8 .folha-imagem.tr { top: 14px; right: 14px; }
+            .moldura-imagem-8 .folha-imagem.bl { bottom: 14px; left: 14px; }
+            .moldura-imagem-8 .folha-imagem.br { bottom: 14px; right: 14px; }
+
             .beneficio { padding: 20px 46px; border-radius: 30px; }
             .beneficio::before { left: 16px; }
             .beneficio::after  { right: 16px; }
@@ -1545,6 +1640,19 @@
         <p>
             A <span class="destaque">D'oovera Up</span> une a precisão da ciência à pureza da natureza para reconstruir seus fios, estimular o crescimento e combater a queda capilar.
         </p>
+    </section>
+
+    <!-- ============================================================
+         IMAGEM 8 — entre a caixa-frase e Benefícios
+         ============================================================ -->
+    <section class="secao-imagem-8">
+        <div class="moldura-imagem-8">
+            <i class="fa-solid fa-leaf folha-imagem tl"></i>
+            <i class="fa-solid fa-leaf folha-imagem tr"></i>
+            <i class="fa-solid fa-leaf folha-imagem bl"></i>
+            <i class="fa-solid fa-leaf folha-imagem br"></i>
+            <img src="8.jpg" alt="Apresentação D'oovera Up — resultado do tratamento">
+        </div>
     </section>
 
     <section>
@@ -2034,7 +2142,7 @@
         }
 
         /* ============================================================
-           POP-UP "CONSUELO"
+           POP-UP "CONSUELO" — reaparece a cada nova passagem pelo carrossel
            ============================================================ */
         var popup = document.getElementById('popupConsuelo');
         var btnFechar = document.getElementById('fecharConsuelo');
@@ -2044,17 +2152,20 @@
 
         if (popup && secaoCarrossel) {
             var verificarScroll = function () {
-                if (fechadoPeloUsuario) return;
-
                 var rect = secaoCarrossel.getBoundingClientRect();
                 var passouDoCarrossel = rect.bottom < window.innerHeight * 0.4;
 
-                if (passouDoCarrossel && !jaExibido) {
-                    popup.classList.add('visivel');
-                    jaExibido = true;
-                } else if (!passouDoCarrossel && jaExibido) {
-                    popup.classList.remove('visivel');
-                    jaExibido = false;
+                if (passouDoCarrossel) {
+                    if (!jaExibido && !fechadoPeloUsuario) {
+                        popup.classList.add('visivel');
+                        jaExibido = true;
+                    }
+                } else {
+                    if (jaExibido) {
+                        popup.classList.remove('visivel');
+                        jaExibido = false;
+                    }
+                    fechadoPeloUsuario = false;
                 }
             };
 
@@ -2076,6 +2187,7 @@
             if (btnFechar) {
                 btnFechar.addEventListener('click', function () {
                     popup.classList.remove('visivel');
+                    jaExibido = false;
                     fechadoPeloUsuario = true;
                 });
             }
